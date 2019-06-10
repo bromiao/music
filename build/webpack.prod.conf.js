@@ -135,18 +135,20 @@ const webpackConfig = merge(baseWebpackConfig, {
               proxy:{
                   '/apis': {
                       target: 'https://y.qq.com',
+                      secure: false,
                       changeOrigin: true, //是否跨域
                       pathRewrite: {
                           '^/apis': 'apis' //需要rewrite重写的,
                       }
-                  }/*,
-                  '/apis/getVkey': {
+                  },
+                  '/Vkey': {
                       target: 'https://u.y.qq.com',
+                      secure: false,
                       changeOrigin: true, //是否跨域
                       pathRewrite: {
-                          '^/apis': 'apis' //需要rewrite重写的,
+                          '^/Vkey': '' //需要rewrite重写的,
                       }
-                  },*/
+                  }
               }
           },
           // 这个很重要，如果没有配置这段，也不会进行预编译

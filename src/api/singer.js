@@ -50,14 +50,14 @@ export function getSingerDetail(singermid){
 export function getSongVkey (songmid, callback) { // 获取歌曲的vkey
 
     const data = Object.assign({}, commonParams, {
-        "-": 'getplaysongvkey88861133588992',
+        "-": 'getplaysongvkey8550012480949205',
         loginUin: 0,
         hostUin: 0,
         format: 'json',
         notice: 0,
         platform: 'yqq.json',
         needNewCode: 0,
-        data: `{"req":{"module":"CDN.SrfCdnDispatchServer","method":"GetCdnDispatch","param":{"guid":"5416664912","calltype":0,"userip":""}},"req_0":{"module":"vkey.GetVkeyServer","method":"CgiGetVkey","param":{"guid":"5416664912","songmid":["${songmid}"],"songtype":[0],"uin":"0","loginflag":1,"platform":"20"}},"comm":{"uin":0,"format":"json","ct":20,"cv":0}}`
+        data: `{"req":{"module":"CDN.SrfCdnDispatchServer","method":"GetCdnDispatch","param":{"guid":"5416664912","calltype":0,"userip":""}},"req_0":{"module":"vkey.GetVkeyServer","method":"CgiGetVkey","param":{"guid":"5416664912","songmid":["${songmid}"],"songtype":[0],"uin":"0","loginflag":1,"platform":"20"}},"comm":{"uin":0,"format":"json","ct":24,"cv":0}}`
     })
     axios('/Vkey/cgi-bin/musicu.fcg',{
         params: data,

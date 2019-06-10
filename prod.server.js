@@ -1,10 +1,12 @@
 var express = require('express')
 var config = require('./config/index')
 var axios = require('axios')
+var history = require('connect-history-api-fallback')
 
 
 const app = express()
 var apiRoutes = express.Router()
+
 
 
 /*apiRoutes.all('*', function(req, res, next) {
@@ -113,13 +115,13 @@ apiRoutes.get('/apis/search', function (req, res) {//这里的路径是给前端
 apiRoutes.get('/Vkey/cgi-bin/musicu.fcg', function (req, res) {//这里的路径是给前端发送请求的url
     const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
 
-    axios(url,{
-        params: req.query,
+    axios.get(url,{
         headers: {
-            referer: 'https://y.qq.com/portal/player.html',
+            referer: 'https://y.qq.com/',
             host: 'u.y.qq.com',
             'content-type': 'text/plain; charset=utf-8'
-        }
+        },
+        params: req.query
     }).then(response => {
         let rest = response.data
         if(typeof rest === 'string') {
@@ -170,6 +172,8 @@ apiRoutes.get('/Vkey/cgi-bin/musicu.fcg', function (req, res) {//这里的路径
 })
 
 app.use('/', apiRoutes)
+
+app.use(history())
 
 app.use(express.static('./dist'))  //静态资源入口
 
